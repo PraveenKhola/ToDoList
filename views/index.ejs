@@ -1,0 +1,21 @@
+
+    <!-- Adding the header section -->
+    <%- include('partials/header.ejs')  %>
+
+    <!-- Adding the main section-->
+    <div class="container">
+        <% locals.listItems.forEach(listItem => { %>
+            <form action="/delete" method="post">
+                <div class="item">
+                    <input type="checkbox" name="checkbox" value="<%=listItem._id %>" onchange="this.form.submit()">
+                    <div class="item-content"><%= listItem.content %></div>
+                </div>
+                <input type="hidden" name="listName" value="<%=locals.listName %>">
+            </form>
+        <% })%>
+        
+        <%- include('partials/form.ejs')  %>
+    </div>
+</main>
+    <!-- Adding footer section -->
+    <%- include('partials/footer.ejs')  %>
